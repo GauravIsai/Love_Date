@@ -357,3 +357,7 @@ function sendWhatsAppYes() {
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 }
+
+if (navigator.vibrate) {
+    navigator.vibrate(100); // Vibrates for 100ms
+}
