@@ -351,13 +351,36 @@ gsap.set(".card", {
   transformPerspective: 1000
 });
 
-function sendWhatsAppYes() {
-    const phoneNumber = "+16478971831"; // Replace with the actual number
-    const message = "Hey! Excited for our date! ❤️ Let's plan it!";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const buttonNo = document.querySelector('.buttons button.no');  // The "No" button on the card
+    const confirmationModal = document.getElementById('confirmation-modal');  // The modal
+    const confirmYes = document.getElementById('confirm-yes');  // "Yes" button in the modal
+    const confirmNo = document.getElementById('confirm-no');  // "No" button in the modal
 
-if (navigator.vibrate) {
-    navigator.vibrate(100); // Vibrates for 100ms
-}
+    // Show the modal when the "No" button is clicked
+    buttonNo.addEventListener('click', function () {
+        confirmationModal.classList.add('active'); // Show modal with animation
+    });
+
+    // If "Yes" is clicked in the modal, reload the page with a fun message
+    confirmYes.addEventListener('click', function () {
+        alert("Whoops! Looks like we need to try again... Let's go again! 🚀");
+
+        // Hide the modal with animation (remove 'active' class)
+        confirmationModal.classList.remove('active');
+
+        // Reload the page after a short delay
+        setTimeout(function () {
+            window.location.reload(); // Reload the page
+        }, 1500); // Delay reload by 1.5 seconds to show the fun alert
+    });
+
+    // If "No" is clicked in the modal, close the modal without reloading
+    confirmNo.addEventListener('click', function () {
+        confirmationModal.classList.remove('active'); // Close the modal with animation
+        setTimeout(function () {
+            window.location.reload(); // Reload the page
+        }, 1500); 
+
+    });
+});
