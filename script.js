@@ -350,7 +350,6 @@ gsap.set(".card", {
   rotateX: 0,
   transformPerspective: 1000
 });
-
 document.addEventListener('DOMContentLoaded', function () {
     const buttonNo = document.querySelector('.buttons button.no');  // The "No" button on the card
     const confirmationModal = document.getElementById('confirmation-modal');  // The modal
@@ -378,9 +377,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // If "No" is clicked in the modal, close the modal without reloading
     confirmNo.addEventListener('click', function () {
         confirmationModal.classList.remove('active'); // Close the modal with animation
-        setTimeout(function () {
-            window.location.reload(); // Reload the page
-        }, 1500); 
-
     });
 });
